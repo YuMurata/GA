@@ -156,8 +156,10 @@
     <ClInclude Include="GADefine.h" />
     <ClInclude Include="InverseMutate.h" />
     <ClInclude Include="MutateBase.h" />
+    <ClInclude Include="MutateFactory.h" />
     <ClInclude Include="NonCross.h" />
     <ClInclude Include="PointCross.h" />
+    <ClInclude Include="RandomMutate.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SwapMutate.h" />
     <ClInclude Include="targetver.h" />
@@ -170,8 +172,10 @@
     <ClCompile Include="InverseMutate.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MutateBase.cpp" />
+    <ClCompile Include="MutateFactory.cpp" />
     <ClCompile Include="NonCross.cpp" />
     <ClCompile Include="PointCross.cpp" />
+    <ClCompile Include="RandomMutate.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

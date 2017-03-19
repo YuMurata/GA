@@ -2,6 +2,7 @@
 #include "GA.h"
 
 #include"CrossFactory.h"
+#include"MutateFactory.h"
 
 using namespace std;
 
@@ -83,23 +84,6 @@ Genome GA::GenGenome()
 	return genome;
 }
 
-GenomeList GA::MutaGenome(const GenomeList &genomes)
-{
-	GenomeList ret = genomes ;
-	for (auto &i : ret)
-	{
-		for (int j = 0; j < (this->genomes_size >> 1); ++j)
-		{
-			auto index1 = this->rand<uniform_int_distribution<>>(0, this->genomes_size - 1);
-			auto index2 = this->rand<uniform_int_distribution<>>(0, this->genomes_size - 1);
-
-			swap(i[index1], i[index2]);
-		}
-	}
-
-	return ret;
-}
-
 GenomeList GA::NextGene(const GenomeList &old_gene)
 {
 	vector<double> evals;
@@ -118,7 +102,8 @@ GenomeList GA::NextGene(const GenomeList &old_gene)
 	discrete_distribution<> dist(begin(evals), end(evals));
 	
 	CrossFactory cross_obj(this->genomes_size);
-	
+	MutateFactory mutate_obj(this->genomes_size);
+
 	while (size(ret) < population)
 	{
 		GenomeList children;
@@ -128,9 +113,9 @@ GenomeList GA::NextGene(const GenomeList &old_gene)
 
 		children = cross_obj.Cross(f, m);
 
-		if (this->rand<uniform_real_distribution<>>(0,1) < 0.1)
+		if (this->rand<uniform_real_distribution<>>(0,1) < 0.5)
 		{
-			children = MutaGenome(children);
+			children = mutate_obj.Mutate(children);
 		}
 
 		ret.insert(end(ret), begin(children), end(children));

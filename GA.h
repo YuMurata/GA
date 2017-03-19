@@ -39,8 +39,6 @@ public:
 		}
 	}
 
-	GenomeList MutaGenome(const GenomeList &genomes);
-
 	GenomeList NextGene(const GenomeList &old_gene);
 
 	void Disp(const GenomeList &gene);
