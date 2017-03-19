@@ -1,14 +1,7 @@
 #include "stdafx.h"
 #include "GA.h"
 
-#include<algorithm>
-#include<numeric>
-#include<iostream>
-#include<iterator>
-#include<memory>
-#include<string>
-
-#include"Cross.h"
+#include"CrossFactory.h"
 
 using namespace std;
 
@@ -124,14 +117,8 @@ GenomeList GA::NextGene(const GenomeList &old_gene)
 
 	discrete_distribution<> dist(begin(evals), end(evals));
 	
-	vector<unique_ptr<CrossBase>> cross;
-	cross.push_back(make_unique<PointCross>(this->genomes_size));
-	cross.push_back(make_unique<UniformCross>(this->genomes_size));
-	cross.push_back(make_unique<NonCross>(this->genomes_size));
+	CrossFactory cross_obj(this->genomes_size);
 	
-
-	auto cross_num = size(cross);
-
 	while (size(ret) < population)
 	{
 		GenomeList children;
@@ -139,8 +126,7 @@ GenomeList GA::NextGene(const GenomeList &old_gene)
 		auto &f = old_gene[dist(this->mt)];
 		auto &m = old_gene[dist(this->mt)];
 
-		auto pattern = this->rand<uniform_int_distribution<>>(0, cross_num-1);
-		children = cross[pattern]->Cross(f, m);
+		children = cross_obj.Cross(f, m);
 
 		if (this->rand<uniform_real_distribution<>>(0,1) < 0.1)
 		{

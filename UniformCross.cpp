@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "UniformCross.h"
-#include<algorithm>
 
 using namespace std;
 

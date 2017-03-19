@@ -150,20 +150,26 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cross.h" />
+    <ClInclude Include="CrossFactory.h" />
     <ClInclude Include="CrossBase.h" />
     <ClInclude Include="GA.h" />
     <ClInclude Include="GADefine.h" />
+    <ClInclude Include="InverseMutate.h" />
+    <ClInclude Include="MutateBase.h" />
     <ClInclude Include="NonCross.h" />
     <ClInclude Include="PointCross.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="SwapMutate.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="UniformCross.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CrossBase.cpp" />
+    <ClCompile Include="CrossFactory.cpp" />
     <ClCompile Include="GA.cpp" />
+    <ClCompile Include="InverseMutate.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MutateBase.cpp" />
     <ClCompile Include="NonCross.cpp" />
     <ClCompile Include="PointCross.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -172,6 +178,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="SwapMutate.cpp" />
     <ClCompile Include="UniformCross.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -4,11 +4,7 @@
 #include "stdafx.h"
 
 #include"GA.h"
-#include<algorithm>
-#include<numeric>
-#include<iostream>
-#include<conio.h>
-#include<string>
+
 
 using namespace std;
 
@@ -21,9 +17,7 @@ const string tar("HelloWorld");
 	const int population = 10;
 	const int genome_size = sizeof(char)*_BITS_BYTE;
 	const int genomes_size = genome_size*size(tar);
-
-	cout <<string("a")<< endl;
-
+	
 	EvalFunc func = [&tar](const Conv &conv)
 	{
 		vector<double> dis_vec(size(conv));

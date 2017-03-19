@@ -13,3 +13,16 @@
 
 
 // TODO: プログラムに必要な追加ヘッダーをここで参照してください
+
+#include<algorithm>
+#include<functional>
+#include<iostream>
+#include<iterator>
+#include<memory>
+#include<numeric>
+#include<string>
+#include<vector>
+#include<conio.h>
+#include<Randomer.h>
+
+#include"GADefine.h"

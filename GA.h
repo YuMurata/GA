@@ -1,6 +1,6 @@
 #pragma once
 
-#include<Randomer.h>
+
 #include"GADefine.h"
 
 class GA:public Randomer
