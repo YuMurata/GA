@@ -1,8 +1,5 @@
 #pragma once
 
-
-#include"GADefine.h"
-
 class GA:public Randomer
 {
 private:
@@ -28,16 +25,7 @@ public:
 
 	Genome GenGenome();
 
-	void Evolve()
-	{
-		while (Eval(gene[0])<10000)
-		{
-			//cout << generation_num << endl;
-			Disp(gene);
-			gene = NextGene(gene);
-			//++generation_num;
-		}
-	}
+	void Evolve(const double &threshold, const bool &gene_flag = true);
 
 	GenomeList NextGene(const GenomeList &old_gene);
 

@@ -113,7 +113,7 @@ GenomeList GA::NextGene(const GenomeList &old_gene)
 
 		children = cross_obj.Cross(f, m);
 
-		if (this->rand<uniform_real_distribution<>>(0,1) < 0.5)
+		if (this->rand<uniform_int_distribution<>>(0,100) <30 )
 		{
 			children = mutate_obj.Mutate(children);
 		}
@@ -131,5 +131,23 @@ void GA::Disp(const GenomeList &gene)
 		auto conv = this->Convert(genome);
 		auto str = this->PreDisp(conv);
 		std::cout << str << ":" << Eval(genome) << endl;
+	}
+}
+
+void GA::Evolve(const double &threshold, const bool &gene_flag)
+{
+	double eval=0;
+	auto IsFinish = [&]()
+	{
+		eval = gene_flag ? eval + 1 : this->Eval(this->gene[0]);
+		auto ret = eval > threshold;
+		return ret;
+	};
+	while (!IsFinish())
+	{
+		cout << "--------------------" << endl;
+		Disp(gene);
+		gene = NextGene(gene);
+		//++generation_num;
 	}
 }

@@ -4,6 +4,8 @@
 #include"UniformCross.h"
 #include"NonCross.h"
 
+#include<Builder.h>
+
 using namespace std;
 
 struct CrossFactory::Impl
@@ -11,9 +13,12 @@ struct CrossFactory::Impl
 	vector<unique_ptr<CrossBase>> p_cross;
 	Impl(const int &genomes_size)
 	{
-		this->p_cross.push_back(make_unique<PointCross>(genomes_size));
-		this->p_cross.push_back(make_unique<UniformCross>(genomes_size));
-		this->p_cross.push_back(make_unique<NonCross>(genomes_size));
+		this->p_cross = VUInitialize<CrossBase>
+			(
+				make_unique<PointCross>(genomes_size),
+				make_unique<UniformCross>(genomes_size),
+				make_unique<NonCross>(genomes_size)
+				);
 	}
 };
 

@@ -1,7 +1,5 @@
 #pragma once
 
-#include"GADefine.h"
-
 class MutateBase :
 	public Randomer
 {

@@ -20,9 +20,15 @@ GenomeList UniformCross::Cross(const Genome &father, const Genome &mother)
 	Genome fc = father;
 	Genome mc = mother;
 
-	for (auto &i : index)
+	auto itrs=mismatch(begin(fc), end(fc), begin(mc));
+
+	while (itrs.first != end(fc))
 	{
-		swap(fc[i], mc[i]);
+		if (this->rand<uniform_int_distribution<>>(0, 1))
+		{
+			swap(*itrs.first, *itrs.second);
+		}
+		itrs = mismatch(itrs.first+1, end(fc), itrs.second+1);
 	}
 
 	vector<Genome> ret{ fc, mc };

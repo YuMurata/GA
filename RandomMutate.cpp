@@ -33,7 +33,7 @@ GenomeList RandomMutate::Mutate(const GenomeList& children)
 
 	auto func = [&](const Genome &i)
 	{
-		vector<int> index(this->genomes_size >> 1);
+		vector<int> index(gen_func());
 		generate(begin(index), end(index), gen_func);
 
 		Genome ret(this->genomes_size);

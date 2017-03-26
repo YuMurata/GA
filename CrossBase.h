@@ -1,8 +1,5 @@
 #pragma once
 
-#include"GADefine.h"
-#include<Randomer.h>
-
 class CrossBase:public Randomer
 {
 protected:

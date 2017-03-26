@@ -5,6 +5,8 @@
 #include"InverseMutate.h"
 #include"RandomMutate.h"
 
+#include<Builder.h>
+
 using namespace std;
 
 struct MutateFactory::Impl
@@ -12,9 +14,12 @@ struct MutateFactory::Impl
 	vector<unique_ptr<MutateBase>> p_mutate;
 	Impl(const int &genomes_size)
 	{
-		this->p_mutate.push_back(make_unique<SwapMutate>(genomes_size));
-		this->p_mutate.push_back(make_unique<InverseMutate>(genomes_size));
-		this->p_mutate.push_back(make_unique<RandomMutate>(genomes_size));
+		this->p_mutate = VUInitialize<MutateBase>
+			(
+				make_unique<SwapMutate>(genomes_size),
+				make_unique<InverseMutate>(genomes_size),
+				make_unique<RandomMutate>(genomes_size)
+				);
 	}
 };
 

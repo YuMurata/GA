@@ -17,12 +17,21 @@ SwapMutate::~SwapMutate()
 GenomeList SwapMutate::Mutate(const GenomeList& children)
 {
 	GenomeList ret = children;
+
+	auto gen_func = [&]()
+	{
+		auto ret = this->rand<uniform_int_distribution<>>(0, this->genomes_size - 1);
+		return ret;
+	};
+
+	auto mutate_num = gen_func();
+
 	for (auto &i : ret)
 	{
-		for (int j = 0; j < (this->genomes_size >> 1); ++j)
+		for (int j = 0; j < mutate_num; ++j)
 		{
-			auto index1 = this->rand<uniform_int_distribution<>>(0, this->genomes_size - 1);
-			auto index2 = this->rand<uniform_int_distribution<>>(0, this->genomes_size - 1);
+			auto index1 = gen_func();
+			auto index2 = gen_func();
 
 			swap(i[index1], i[index2]);
 		}
